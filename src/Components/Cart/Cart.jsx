@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import styles from "./Cart.module.css";
 import { CartContext } from "../../Context/CartContext";
@@ -9,7 +8,6 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const [noCartInfo, setNoCartInfo] = useState("");
   const [cartDetails, setCartDetails] = useState(null);
   const {
     getUserCart,

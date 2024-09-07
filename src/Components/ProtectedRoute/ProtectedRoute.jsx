@@ -10,7 +10,6 @@ export default function ProtectedRoute(props) {
   if (token) {
     return props.children;
   } else {
-    alert("Please Login First");
     return <Navigate to={"Login"}></Navigate>;
   }
 }

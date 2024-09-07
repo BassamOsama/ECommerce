@@ -133,14 +133,14 @@ export default function NavBar() {
             )}
             {token && (
               <>
-                <li>
+                <Link to={"/cart"}>
                   <span className="flex relative cursor-pointer py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-400 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                     <FaShoppingCart className="text-3xl" />
                     <span className="absolute top-0 text-white px-2 rounded-lg bg-green-600 end-0 translate-x-1/2 -translate-y-1/2">
                       {cartItems}
                     </span>
                   </span>
-                </li>
+                </Link>
                 <li onClick={LogOut}>
                   <span className="block cursor-pointer py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-400 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                     Log Out
