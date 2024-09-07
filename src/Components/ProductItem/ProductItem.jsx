@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./ProductItem.module.css";
 import { FaStar } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
@@ -50,18 +51,20 @@ export default function ProductItem({ product }) {
             </div>
           </div>
         </Link>
-        <button
-          onClick={() => addItem(product._id)}
-          className="w-2/4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 translate-y-full bg-green-600 text-white py-2 rounded-md opacity-0 "
-        >
-          Add To Cart +
-        </button>
-        <button
-          onClick={() => addItemToWish(product._id)}
-          className="w-2/4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 translate-y-full bg-green-600 text-white py-2 rounded-md opacity-0 "
-        >
-          Add To WishList +
-        </button>
+        <div className="flex w-100 gap-6">
+          <button
+            onClick={() => addItem(product._id)}
+            className="w-11/12 px-5  group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 translate-y-full bg-green-600 text-white rounded-md opacity-0 "
+          >
+            Add To Cart +
+          </button>
+          <button
+            onClick={() => addItemToWish(product._id)}
+            className="w-1/12 text-4xl  text-black py-2"
+          >
+            <FaHeart />
+          </button>
+        </div>
       </div>
     </>
   );
