@@ -1,10 +1,5 @@
-import { useState } from "react";
 import { useEffect } from "react";
-import {
-  createBrowserRouter,
-  createHashRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import LayOut from "./Components/LayOut/LayOut.jsx";
 import Home from "./Components/Home/Home.jsx";
@@ -17,7 +12,6 @@ import Products from "./Components/Products/Products.jsx";
 import Register from "./Components/Register/Register.jsx";
 import NotFound from "./Components/NotFound/NotFound.jsx";
 import Wishlist from "./Components/Wishlist/Wishlist.jsx";
-import CounterContextProvider from "./Context/CounterContext.jsx";
 import UserContextProvider from "./Context/UserContext.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute.jsx";
 import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
@@ -27,6 +21,7 @@ import CartContextProvider from "./Context/CartContext.jsx";
 import toast, { Toaster } from "react-hot-toast";
 import CheckOut from "./Components/CheckOut/CheckOut.jsx";
 import Allorders from "./Components/Allorders/Allorders.jsx";
+import WishListContextProvider from "./Context/WishListContext.jsx";
 
 const myClient = new QueryClient({
   defaultOptions: {
@@ -37,7 +32,6 @@ const myClient = new QueryClient({
   },
 });
 function App() {
-  let [count, setCount] = useState(0);
   useEffect(() => {}, []);
   const routes = createHashRouter([
     {
@@ -141,9 +135,9 @@ function App() {
       <QueryClientProvider client={myClient}>
         <UserContextProvider>
           <CartContextProvider>
-            <CounterContextProvider>
+            <WishListContextProvider>
               <RouterProvider router={routes}></RouterProvider>
-            </CounterContextProvider>
+            </WishListContextProvider>
           </CartContextProvider>
         </UserContextProvider>
         <Toaster

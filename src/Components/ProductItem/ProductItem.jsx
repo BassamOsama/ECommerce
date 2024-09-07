@@ -6,13 +6,22 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
+import { WishListContext } from "../../Context/WishListContext";
 
 export default function ProductItem({ product }) {
   const { addItemToCart, setCartItems } = useContext(CartContext);
+  const { addItemToWishList, setWishListItems } = useContext(WishListContext);
   async function addItem(id) {
     const response = await addItemToCart(id);
     if (response.data.status == "success") {
       setCartItems(response.data.numOfCartItems);
+      toast.success("Added");
+    }
+  }
+  async function addItemToWish(id) {
+    const response = await addItemToWishList(id);
+    if (response.data.status == "success") {
+      setWishListItems(response.data.data.length);
       toast.success("Added");
     }
   }
@@ -46,6 +55,12 @@ export default function ProductItem({ product }) {
           className="w-2/4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 translate-y-full bg-green-600 text-white py-2 rounded-md opacity-0 "
         >
           Add To Cart +
+        </button>
+        <button
+          onClick={() => addItemToWish(product._id)}
+          className="w-2/4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 translate-y-full bg-green-600 text-white py-2 rounded-md opacity-0 "
+        >
+          Add To WishList +
         </button>
       </div>
     </>
