@@ -6,11 +6,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 
 export default function Login() {
-  const {setToken} = useContext(UserContext)
+  const { setToken } = useContext(UserContext);
   const [errMsg, setErrMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const schema = Yup.object().shape({
@@ -113,13 +113,21 @@ export default function Login() {
             </div>
           ) : null}
         </div>
-        <button
-          disabled={isLoading}
-          type="submit"
-          className="disabled:bg-green-200 disabled:text-gray-500 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-        >
-          {isLoading ? <FaSpinner className="animate-spin" /> : "Login Now"}
-        </button>
+        <div className="flex justify-between">
+          <Link
+            to={"/forgetPassword"}
+            className="text-xl font-bold hover:text-green-600"
+          >
+            Forget Your Password?
+          </Link>
+          <button
+            disabled={isLoading}
+            type="submit"
+            className="disabled:bg-green-200 disabled:text-gray-500 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            {isLoading ? <FaSpinner className="animate-spin" /> : "Login Now"}
+          </button>
+        </div>
       </form>
     </div>
   );

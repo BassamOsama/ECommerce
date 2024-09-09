@@ -8,7 +8,6 @@ import Cart from "./Components/Cart/Cart.jsx";
 import Categories from "./Components/Categories/Categories.jsx";
 import Login from "./Components/Login/Login.jsx";
 import NavBar from "./Components/NavBar/NavBar.jsx";
-import Products from "./Components/Products/Products.jsx";
 import Register from "./Components/Register/Register.jsx";
 import NotFound from "./Components/NotFound/NotFound.jsx";
 import Wishlist from "./Components/Wishlist/Wishlist.jsx";
@@ -18,10 +17,14 @@ import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CartContextProvider from "./Context/CartContext.jsx";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import CheckOut from "./Components/CheckOut/CheckOut.jsx";
-import Allorders from "./Components/Allorders/Allorders.jsx";
+import AllOrders from "./Components/AllOrders/AllOrders.jsx";
 import WishListContextProvider from "./Context/WishListContext.jsx";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword.jsx";
+import VerifyCode from "./Components/VerifyCode/VerifyCode.jsx";
+import ResetPassword from "./Components/ResetPassword/ResetPassword.jsx";
+import RecentProducts from "./Components/RecentProducts/RecentProducts.jsx";
 
 const myClient = new QueryClient({
   defaultOptions: {
@@ -55,6 +58,18 @@ function App() {
           ),
         },
         {
+          path: "forgetPassword",
+          element: <ForgetPassword />,
+        },
+        {
+          path: "verifyCode",
+          element: <VerifyCode />,
+        },
+        {
+          path: "resetPassword",
+          element: <ResetPassword />,
+        },
+        {
           path: "checkout/:cartId",
           element: (
             <ProtectedRoute>
@@ -66,7 +81,7 @@ function App() {
           path: "allorders",
           element: (
             <ProtectedRoute>
-              <Allorders />
+              <AllOrders />
             </ProtectedRoute>
           ),
         },
@@ -102,7 +117,7 @@ function App() {
           path: "products",
           element: (
             <ProtectedRoute>
-              <Products />
+              <RecentProducts />
             </ProtectedRoute>
           ),
         },
